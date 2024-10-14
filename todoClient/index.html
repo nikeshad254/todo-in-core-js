@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="todo-app">
+      <h1>To-Do List</h1>
+      <div class="input-container">
+        <textarea
+          class="todo-input auto-resizing-textarea"
+          placeholder="Add a new task..."
+        ></textarea>
+        <button id="add-task-btn">Add Task</button>
+      </div>
+      <ul id="todo-list">
+        <!-- Dummy List Item -->
+        <li class="editable">
+          <textarea class="task-text auto-resizing-textarea">
+This is an editable dummy task.</textarea
+          >
+          <div class="task-actions">
+            <button class="complete-btn">Complete</button>
+            <button class="delete-btn">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
