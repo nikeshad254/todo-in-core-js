@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do App</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   </head>
   <body>
     <div class="todo-app">
@@ -13,10 +14,11 @@
         <textarea
           class="todo-input auto-resizing-textarea"
           placeholder="Add a new task..."
+          id="todo-title"
         ></textarea>
         <button id="add-task-btn">Add Task</button>
       </div>
-      <ul id="todo-list">
+      <ul id="todos-list">
         <!-- Dummy List Item -->
         <li class="editable">
           <textarea class="task-text auto-resizing-textarea">
@@ -31,5 +33,6 @@ This is an editable dummy task.</textarea
     </div>
 
     <script src="script.js"></script>
+    <script src="todoUsingFetch.js"></script>
   </body>
 </html>

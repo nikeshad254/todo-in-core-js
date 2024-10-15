@@ -110,15 +110,30 @@ li.completed {
 }
 
 button.complete-btn {
+  background-color: #00ffa2;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
+button.edit-btn {
   background-color: #007bff;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+  text-wrap: nowrap;
 }
 
 button.complete-btn:hover {
+  background-color: #00d96d;
+}
+
+button.edit-btn:hover {
   background-color: #0069d9;
 }
 

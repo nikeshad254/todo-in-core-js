@@ -9,13 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
 
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   try {
     const todos = await Todo.find();
     res.status(200).json({
@@ -27,7 +23,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/:id", async (req, res) => {
+app.get("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const todo = await Todo.findById(id);
@@ -45,7 +41,7 @@ app.get("/:id", async (req, res) => {
   }
 });
 
-app.post("/", async (req, res) => {
+app.post("/todos", async (req, res) => {
   try {
     const { title } = req.body;
 
@@ -64,7 +60,7 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.patch("/:id", async (req, res) => {
+app.patch("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { title, completed } = req.body;
@@ -96,7 +92,7 @@ app.patch("/:id", async (req, res) => {
   }
 });
 
-app.delete("/:id", async (req, res) => {
+app.delete("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const todo = await Todo.findById(id);
