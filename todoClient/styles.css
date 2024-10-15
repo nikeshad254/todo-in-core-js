@@ -129,6 +129,20 @@ button.edit-btn {
   text-wrap: nowrap;
 }
 
+button.save-btn {
+  background-color: #00d9ff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
+button.save-btn:hover {
+  background-color: #06afdd;
+}
+
 button.complete-btn:hover {
   background-color: #00d96d;
 }
@@ -151,11 +165,24 @@ button.delete-btn:hover {
 }
 
 /* Editable styling */
-.editable {
-  outline: none;
+
+li.non-editable button.save-btn {
+  display: none;
 }
 
-.editable:focus {
+/* li.editable button.save-btn {
+  display: block;
+} */
+
+li.editable button.complete-btn {
+  display: none;
+}
+
+.editable {
+  border-color: #4318ee;
+}
+
+.editable:focus-within {
   border-color: #007bff;
   background-color: #e9f5ff;
 }
