@@ -36,12 +36,24 @@
           const todoElement = event.target.closest("li");
           this.updateTodo(todoElement);
         }
+
+        // check if the complete button is clicked
+        if (event.target.closest(".complete-btn")) {
+          const todoElement = event.target.closest("li");
+          if (todoElement.classList.contains("completed")) {
+            this.markTodo(todoElement, false);
+          } else {
+            this.markTodo(todoElement, true);
+          }
+        }
       });
     }
 
     singleTodoTemplate(todo) {
       return `
-        <li class="non-editable" data-id="${todo._id}">
+        <li class="non-editable ${
+          todo.completed ? "completed" : ""
+        }" data-id="${todo._id}">
           <textarea readonly class="task-text auto-resizing-textarea">${
             todo.title
           }</textarea>
@@ -117,7 +129,7 @@
       const title = todoElement.querySelector(".task-text").value;
       const id = todoElement.dataset.id;
       try {
-        const response = await fetch(`http://localhost:8080/todos/${id}`, {
+        await fetch(`http://localhost:8080/todos/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -126,6 +138,34 @@
         });
         this.makeNonEditable(todoElement, false);
         this.originalTextMap.delete(todoElement); // Clean up Map after saving
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    async markTodo(todoElement, isComplete) {
+      try {
+        const completed = isComplete;
+        const id = todoElement.dataset.id;
+
+        await fetch(`http://localhost:8080/todos/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ completed }),
+        });
+
+        const completedBtn = todoElement.querySelector(".complete-btn");
+        if (completed) {
+          todoElement.classList.add("completed");
+          completedBtn.innerHTML =
+            '<iconify-icon icon="mdi:multiply" width="24" height="24"></iconify-icon>';
+        } else {
+          todoElement.classList.remove("completed");
+          completedBtn.innerHTML =
+            '<iconify-icon icon="mdi:tick" width="24" height="24"></iconify-icon>';
+        }
       } catch (err) {
         console.log(err);
       }

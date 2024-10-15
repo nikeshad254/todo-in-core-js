@@ -178,6 +178,14 @@ li.editable button.complete-btn {
   display: none;
 }
 
+li.completed button.complete-btn {
+  background-color: #d200d9;
+}
+
+li.completed button.complete-btn:hover {
+  background-color: #9e05a3;
+}
+
 .editable {
   border-color: #4318ee;
 }
